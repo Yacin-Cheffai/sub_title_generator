@@ -1,10 +1,10 @@
 import speech_recognition as sr
  
 
-def audio_to_text():
+def audio_to_text(file_path):
 
     result = ''
-    AUDIO_FILE = ("/home/Yacin/Downloads/speech.wav")
+    AUDIO_FILE = file_path
     
     # use the audio file as the audio source
     
@@ -23,6 +23,6 @@ def audio_to_text():
     
     except sr.RequestError as e:
         result = "Could not request results from Google Speech {0}".format(e)
+    print(result)
     return result
 
-print(audio_to_text())
