@@ -8,7 +8,6 @@
     <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
   {% endif %}
 
-  <p><a href="#">Return to home</a></p>
   
   {%if result_path%}
   <form method="get" enctype="multipart/form-data" action="{%url 'generator:download'%}">
