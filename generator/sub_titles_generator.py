@@ -2,6 +2,9 @@ import speech_recognition as sr
  
 
 def audio_to_text(file_path):
+   
+    open('results.txt', 'w').close()
+    result_file = open ('results.txt', 'w')
 
     result = ''
     AUDIO_FILE = file_path
@@ -16,7 +19,7 @@ def audio_to_text(file_path):
         audio = r.record(source)  
     
     try:
-        result = "The audio file contains: " + r.recognize_google(audio)
+        result = r.recognize_google(audio)
     
     except sr.UnknownValueError:
         result = "Google Speech Recognition could not understand audio"
@@ -24,5 +27,7 @@ def audio_to_text(file_path):
     except sr.RequestError as e:
         result = "Could not request results from Google Speech {0}".format(e)
     print(result)
+    result_file.write(result)
+    result_file.close()
     return result
 
