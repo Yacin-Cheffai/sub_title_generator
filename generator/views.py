@@ -10,11 +10,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 def upload(request):
     
+    # TODO: remove spaces from file name
 
     if request.method == 'POST' and request.FILES['myfile']:
         myfile = request.FILES['myfile']
-        if myfile.name[-4:] ==  '.wav':
 
+        if myfile.name[-4:] ==  '.wav':
+            myfile.name = 'uploaded_file.wav'
             fs = FileSystemStorage()
             filename = fs.save(myfile.name, myfile)
             uploaded_file_url = fs.url(filename)
