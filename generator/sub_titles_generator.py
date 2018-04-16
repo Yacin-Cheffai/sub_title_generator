@@ -1,16 +1,14 @@
-
 from aeneas.tools.execute_task import ExecuteTaskCLI
-
-
 import speech_recognition as sr
 
-def audio_to_text(file_path):
+
+def audio_to_text(AUDIO_FILE):
    
     open('results.txt', 'w').close()
     result_file = open ('results.txt', 'w')
 
     result = ''
-    AUDIO_FILE = file_path
+    # AUDIO_FILE = file_path
     
     # use the audio file as the audio source
     
@@ -34,9 +32,8 @@ def audio_to_text(file_path):
     result_file.close()
     return result
 
-def force_align(audio_file_path, text_file_path, output_path):
-# def force_align():
 
+def force_align(audio_file_path, text_file_path, output_path):
     ExecuteTaskCLI(use_sys=False).run(arguments=[
     None, # dummy program name argument
     audio_file_path,

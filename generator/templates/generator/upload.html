@@ -9,7 +9,7 @@
   {% endif %}
 
   
-  {%if result_path%}
+  {%if uploaded_successfully%}
   <form method="get" enctype="multipart/form-data" action="{%url 'generator:download'%}">
     {% csrf_token %}
     <button type="submit">download</button>
