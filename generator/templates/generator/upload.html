@@ -32,13 +32,22 @@
 <body>
   
   <h2 id="site_title">Sub Titles Generator</h2>
-  <div style="margin-top:50px">    
+  <div style="margin-top:50px">  
+          <div class="ui center aligned container" style="margin-top: 30px">
+            {% if messages %}
+            {% for message in messages %}
+                    <div class="ui {{ message.tags }} message">
+                    <p>{{message}}</p>
+                    </div>
+            {% endfor %}
+            {% endif %}
+        </div>  
   <form method="post" enctype="multipart/form-data" class="ui form" style="text-align:center">
       {% csrf_token %}      
         <p id="intro_text">
-          You need to create a sub title for your audio or video file ?, just upload your file and our artificial intelligence system will generate the SRT file for you.
+          You need to create a sub title for your audio or video file ? just upload your file and our artificial intelligence system will generate the <a href="https://fr.wikipedia.org/wiki/SubRip" target="_blank">SRT</a> file for you.
         </p>
-        <div class="ui action input">
+        <div class="ui action input" style="margin-top:30px">
           <input type="text" placeholder="Upload your file" readonly>
           <input type="file" name="myfile" id="myfile" accept=".wav, .mp3">
           <div class="ui icon button">
@@ -49,18 +58,12 @@
           <button class="ui secondary button" type="submit">Upload</button>
         </div>
   </form>
-  </div>
-
-
-    
+  </div>    
     {%if uploaded_successfully%}
     <form method="get" enctype="multipart/form-data" action="{%url 'generator:download'%}" style="text-align:center">
       <div style="margin-top:40px">  
-        {% if uploaded_file_url %}
-          <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-        {% endif %}
         {% csrf_token %}
-      <button type="submit" class="ui primary button">Download</button>
+      <button type="submit" class="ui primary button">Download The Sub Title File</button>
     </form>
     {%endif%}
   </div>
