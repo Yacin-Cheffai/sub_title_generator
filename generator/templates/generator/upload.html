@@ -2,6 +2,7 @@
 <head>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:600&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
 <style type="text/css">
@@ -14,28 +15,28 @@
       display: none;
       }
       #intro_text{
-        font-family: "Arial Black", Gadget, sans-serif;
-        font-size: 18px;
-        letter-spacing: 2px;
-        word-spacing: 2px;
+        font-family: 'Source Code Pro', monospace;
         color: #000000;
-        font-weight: normal;
-        text-decoration: none;
-        font-style: normal;
-        font-variant: normal;
-        text-transform: none;
         margin-right:300px;
         margin-left:300px
+      }
+      #site_title{
+        font-family: 'Source Code Pro', monospace;
+        font-size: 25px;
+        color: #000000;
+        text-align:center;
+        margin-top:30px;
       }
 </style>
 </head>
 <body>
   
+  <h2 id="site_title">Sub Titles Generator</h2>
   <div style="margin-top:50px">    
   <form method="post" enctype="multipart/form-data" class="ui form" style="text-align:center">
       {% csrf_token %}      
         <p id="intro_text">
-          You need to create a sub title for your audio or video file ?, Our artificial intelligence system will help with that, just upload your file then get your .SRT file
+          You need to create a sub title for your audio or video file ?, just upload your file and our artificial intelligence system will generate the SRT file for you.
         </p>
         <div class="ui action input">
           <input type="text" placeholder="Upload your file" readonly>
