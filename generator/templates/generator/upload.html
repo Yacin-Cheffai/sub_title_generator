@@ -13,6 +13,20 @@
       .ui.action.input input[type="file"] {
       display: none;
       }
+      #intro_text{
+        font-family: "Arial Black", Gadget, sans-serif;
+        font-size: 18px;
+        letter-spacing: 2px;
+        word-spacing: 2px;
+        color: #000000;
+        font-weight: normal;
+        text-decoration: none;
+        font-style: normal;
+        font-variant: normal;
+        text-transform: none;
+        margin-right:300px;
+        margin-left:300px
+      }
 </style>
 </head>
 <body>
@@ -20,8 +34,8 @@
   <div style="margin-top:50px">    
   <form method="post" enctype="multipart/form-data" class="ui form" style="text-align:center">
       {% csrf_token %}      
-        <p>
-          You need to create a sub title for your audio or video file, our artificial intelegence systeme will help with that, just upload your file then get your .SRT file
+        <p id="intro_text">
+          You need to create a sub title for your audio or video file ?, Our artificial intelligence system will help with that, just upload your file then get your .SRT file
         </p>
         <div class="ui action input">
           <input type="text" placeholder="Upload your file" readonly>
