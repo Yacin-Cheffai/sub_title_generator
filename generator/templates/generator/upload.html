@@ -1,18 +1,66 @@
-<form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
-  </form>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
 
-  {% if uploaded_file_url %}
-    <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-  {% endif %}
+<style type="text/css">
+      body {
+      padding: 1em;
+      background-color: #f4f4f4;
+      }
 
+      .ui.action.input input[type="file"] {
+      display: none;
+      }
+</style>
+</head>
+<body>
   
-  {%if uploaded_successfully%}
-  <form method="get" enctype="multipart/form-data" action="{%url 'generator:download'%}">
-    {% csrf_token %}
-    <button type="submit">download</button>
+  <div style="margin-top:50px">    
+  <form method="post" enctype="multipart/form-data" class="ui form" style="text-align:center">
+      {% csrf_token %}      
+        <p>
+          You need to create a sub title for your audio or video file, our artificial intelegence systeme will help with that, just upload your file then get your .SRT file
+        </p>
+        <div class="ui action input">
+          <input type="text" placeholder="Upload your file" readonly>
+          <input type="file" name="myfile" id="myfile" accept=".wav, .mp3">
+          <div class="ui icon button">
+            <i class="attach icon"></i>
+          </div>
+        </div>
+        <div style="margin-top:10px">
+          <button class="ui secondary button" type="submit">Upload</button>
+        </div>
   </form>
+  </div>
 
-  {%endif%}
+
+    
+    {%if uploaded_successfully%}
+    <form method="get" enctype="multipart/form-data" action="{%url 'generator:download'%}" style="text-align:center">
+      <div style="margin-top:40px">  
+        {% if uploaded_file_url %}
+          <p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+        {% endif %}
+        {% csrf_token %}
+      <button type="submit" class="ui primary button">Download</button>
+    </form>
+    {%endif%}
+  </div>
+
+<script type="text/javascript">
+  $("input:text").click(function() {
+  $(this).parent().find("input:file").click();
+});
+
+$('input:file', '.ui.action.input')
+  .on('change', function(e) {
+    var name = e.target.files[0].name;
+    $('input:text', $(e.target).parent()).val(name);
+  });
+</script>
+</body>
+
+</html>
